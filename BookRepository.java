@@ -28,7 +28,7 @@ public class BookRepository {
     }
 
     //전체 목록 반환
-    //bookList를 그대로 반환하지 않고 "복사본"을 만들어 반환.
+    //bookList를 그대로 반환하지 않고 복사본을 만들어 반환.
     public List<Book> findAll() {
         return new ArrayList<>(bookList);
     }
