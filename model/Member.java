@@ -1,3 +1,5 @@
+package model; 
+
 public class Member { 
     private String memberId;   // 회원 ID (로그인용)
     private String password;  // 비밀번호

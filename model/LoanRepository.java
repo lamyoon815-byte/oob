@@ -1,3 +1,5 @@
+package model; 
+
 import java.io.*;  //파일 읽기/쓰기, 콘솔 입력 등 컴퓨터와 데이터를 주고받는(Input/Output) 도구들을 통째로 가져옴
 import java.util.ArrayList;  //여러 개의 데이터를 순서대로 담을 수 있는 '목록(List)'이라는 표준 규격(인터페이스)을 가져옵니다.
 import java.util.List; //데이터를 원하는 만큼 늘렸다 줄였다 하며 자유롭게 저장할 수 있는 '가변형 배열 상자'를 가져옴. (위 List의 대표적인 실체)

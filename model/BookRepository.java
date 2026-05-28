@@ -1,3 +1,5 @@
+package model; 
+
 import java.io.*;  // 파일 입출력 클래스들 (BufferedReader 등)
 import java.util.ArrayList;  // 가변 길이 배열
 import java.util.List;   // 리스트 인터페이스

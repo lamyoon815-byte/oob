@@ -1,3 +1,5 @@
+package model; 
+
 import java.time.LocalDate; // 날짜 클래스
 import java.time.format.DateTimeFormatter; // 날짜 ↔ 문자열 변환 도구
 import java.time.temporal.ChronoUnit; // 날짜 간격 계산 (일/월/년)

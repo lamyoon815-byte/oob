@@ -1,3 +1,5 @@
+package model; 
+
 public class Book {                                  //  클래스 Book
     private String bookId;                           //  클래스에서 지정한 변수: 책 아이디, 제목, 저자, 대출 가능 유무
     private String title;
