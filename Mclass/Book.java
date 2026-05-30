@@ -1,3 +1,5 @@
+
+
 public class Book {                                  //  클래스 Book
     private String bookId;                           //  클래스에서 지정한 변수: 책 아이디, 제목, 저자, 대출 가능 유무
     private String title;
@@ -44,25 +46,17 @@ public class Book {                                  //  클래스 Book
         return bookId + "," + title + "," + author + "," + isAvailable;
     }
 
-    // CSV 로드용
-    //   - static 키워드:
-    //       객체를 만들지 않고도 "Book.fromCsvString(line)" 형태로 호출 가능.
-    //       (객체가 아직 없을 때 객체를 만들어야 하므로 static이 필수)
-    //   - split(",") : "a,b,c" → ["a","b","c"] 배열로 자른다.
-    //   - Boolean.parseBoolean("true") : 문자열을 boolean으로 변환.
+   //CSV 로드
     public static Book fromCsvString(String line) {   
         String[] parts = line.split(",");
         return new Book(parts[0], parts[1], parts[2], Boolean.parseBoolean(parts[3]));
-        // ↑ 4-매개변수 생성자(생성자 #2)를 호출 → isAvailable 값까지 복원
-    } // <-- 중괄호 오타 수정 완료
+    } 
 
-    //   - @Override : 부모 클래스(Object)의 toString을 "재정의"한다는 표시.
-    //   - System.out.println(book) 호출 시 이 메소드가 자동으로 실행됨.
-    //   - 삼항연산자 "조건 ? A : B" : 조건이 true면 A, 아니면 B.
+    //콘솔 UI 출력, 디버깅 시 가독성 용도의 오버라이딩
     @Override
     public String toString() {
         String availabilityStatus = isAvailable ? "대출가능" : "대출중";  
         return "[" + bookId + "] " + title + " - " + author
              + " (" + availabilityStatus + ")";
     }
-} // <-- 클래스의 끝
+}
