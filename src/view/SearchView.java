@@ -22,6 +22,8 @@ public class SearchView extends JPanel {
         top.add(searchButton);
 
         resultArea.setEditable(false);
+        resultArea.setFont(new Font("SansSerif", Font.PLAIN, 14));
+        resultArea.setMargin(new Insets(10, 10, 10, 10));
 
         add(top, BorderLayout.NORTH);
         add(new JScrollPane(resultArea), BorderLayout.CENTER);
@@ -39,13 +41,29 @@ public class SearchView extends JPanel {
         return keywordField.getText().trim();
     }
 
+    // 수정된 부분: 검색 결과가 0개일 때도 UI 틀을 유지합니다.
     public void showSearchResult(List<Book> books) {
-        resultArea.setText("");
-        if (books == null || books.isEmpty()) {
-            resultArea.append("검색 결과가 없습니다.\n");
-            return;
+        StringBuilder sb = new StringBuilder();
+        int bookCount = (books == null) ? 0 : books.size(); // 검색된 책의 권수 확인
+
+        // 검색 결과 유무와 상관없이 항상 고정으로 출력되는 상단 틀
+        sb.append("========================================\n");
+        sb.append("  📚 도서 검색 결과\n");
+        sb.append("========================================\n");
+        sb.append("총 ").append(bookCount).append("권의 도서가 있습니다.\n\n");
+
+        if (bookCount == 0) {
+            // 결과가 없을 때 출력되는 메시지
+            sb.append(" • 입력하신 검색어와 일치하는 도서가 없습니다.\n");
+        } else {
+            // 결과가 있을 때 출력되는 도서 리스트
+            for (Book b : books) {
+                sb.append(" • ").append(b.toString()).append("\n"); 
+            }
         }
-        for (Book b : books) resultArea.append("- " + b + "\n");
+        
+        resultArea.setText(sb.toString());
+        SwingUtilities.invokeLater(() -> resultArea.setCaretPosition(0));
     }
 
     public void showMessage(String msg) {

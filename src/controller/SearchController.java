@@ -19,6 +19,8 @@ public class SearchController {
         this.searchView = searchView; 
 
         searchView.setOnSearch(this::handleSearch); // 검색 버튼 클릭 이벤트 연결 
+
+        handleSearch(""); // 초기 화면에 전체 도서 목록 보여주기 위해 빈 문자열로 검색
     }
 
 

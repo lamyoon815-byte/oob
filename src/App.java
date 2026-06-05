@@ -9,6 +9,16 @@ public class App {
         LoanRepository loanRepo = new LoanRepository();
         MemberRepository memberRepo = new MemberRepository();
 
+        try {
+            bookRepo.loadFromFile();
+            loanRepo.loadFromFile();
+            memberRepo.loadFromFile();
+            System.out.println("데이터 로드 완료!");
+        } catch (Exception e) {
+            System.out.println("파일을 불러오는 중 오류가 발생했습니다: " + e.getMessage());
+        }
+
+
         // 2. 뷰 (메인 GUI 프레임) 생성
         MainFrame mainFrame = new MainFrame();
 

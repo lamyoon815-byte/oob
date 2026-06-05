@@ -37,7 +37,7 @@ public class BookRepository {
 
     //도서 목록을 CSV 파일로 저장
     public void saveToFile() throws IOException {
-        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(FILE_PATH))) {
+        try (BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(FILE_PATH), "UTF-8"))) {
             for (Book book : bookList) {              // 향상된 for문: 리스트 순회
                 bufferedWriter.write(book.toCsvString());  // 한 줄 쓰기
                 bufferedWriter.newLine();  // 줄바꿈
@@ -51,7 +51,7 @@ public class BookRepository {
         if (!file.exists()) return;  // 파일이 없으면 작업 중단
 
         bookList.clear();  // 기존 데이터 비우기
-        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(file))) {
+        try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream(file), "UTF-8"))) {
             String line;
             while ((line = bufferedReader.readLine()) != null) {
                 if (!line.trim().isEmpty()) {  // 빈 줄은 건너뛰기
